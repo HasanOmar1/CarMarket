@@ -173,6 +173,36 @@ let lilahCashAfter = carMarket.customers[0].cash = 50_000  // first customer nam
 
 
 
+// ------------------------------------------------------------------------------------
+
+// 3. Car Operations:
+
+//Retrieve all cars available for purchase
+
+
+
+// let companyOne = carMarket.sellers[0].cars;
+// let companyTwo = carMarket.sellers[1].cars;
+// let companyThree = carMarket.sellers[2].cars;
+// let companyFour = carMarket.sellers[3].cars;
+// let companyFive = carMarket.sellers[4].cars;
+
+// console.log(`All the available vehicles :`)
+// for(let prop of companyOne){
+//     console.log(prop)
+// }
+// for(let prop of companyTwo){
+//     console.log(prop)
+// }
+// for(let prop of companyThree){
+//     console.log(prop)
+// }
+// for(let prop of companyFour){
+//     console.log(prop)
+// }
+// for(let prop of companyFive){
+//     console.log(prop)
+// }
 
 
 
