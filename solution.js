@@ -26,7 +26,7 @@ const carMarket =  require("./obj");
 
 //Add a new car to an agency's inventory.
 
-        carMarket.sellers[0].cars[0] = {
+        carMarket.sellers[0].cars[5] = {
             brand : 'Ferarri',
             models : [
                 {
@@ -203,6 +203,38 @@ let lilahCashAfter = carMarket.customers[0].cash = 50_000  // first customer nam
 // for(let prop of companyFive){
 //     console.log(prop)
 // }
+
+
+
+
+//Search for cars based on certain criteria. The search parameters should include the
+// production year, price, and optionally, the brand of the car.
+
+
+// function search(year){
+//     return carMarket.sellers.find(byYear => {
+//         return byYear.cars[0].models[0] === year;
+//     })
+// }
+// console.log(carMarket.sellers[0].cars)
+// console.log(search(2015))
+
+
+const getAgencyByNameOrId = (year) => {
+    return carMarket.sellers.find((byYear) => {
+         return byYear.cars[0].models[0].year === year 
+            // byYear.agencyId === year)
+        }) 
+        }
+console.log(getAgencyByNameOrId(2015))
+console.log(carMarket.sellers[0].cars[0].models[0].year)
+
+
+
+
+
+
+
 
 
 
