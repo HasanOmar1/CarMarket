@@ -185,11 +185,11 @@ let sumOf = customerTwo.reduce((a,b) => {
 
 
 
-// let companyOne = carMarket.sellers[0].cars;
-// let companyTwo = carMarket.sellers[1].cars;
-// let companyThree = carMarket.sellers[2].cars;
-// let companyFour = carMarket.sellers[3].cars;
-// let companyFive = carMarket.sellers[4].cars;
+let companyOne = carMarket.sellers[0].cars;
+let companyTwo = carMarket.sellers[1].cars;
+let companyThree = carMarket.sellers[2].cars;
+let companyFour = carMarket.sellers[3].cars;
+let companyFive = carMarket.sellers[4].cars;
 
 
 // console.log(`All the available vehicles :`)
@@ -216,64 +216,7 @@ let sumOf = customerTwo.reduce((a,b) => {
 
 
 
-// ------[NOT PART OF THE QUESTION]----------------------Gets all year / price / brand -----------------------------------------------
-
-
-// function byYear(obj){
-//     for(let prop in obj){
-//         if(typeof(obj[prop]) === "object"){
-//             byYear(obj[prop]);
-//         }
-//         else{
-//             if(prop === 'year'){
-//                 console.log(prop  + ": " + obj[prop])
-//             }
-//         }
-//     }
-// }
-// let findYear = carMarket.sellers.filter(item => {
-//     byYear(item)
-// })
-
-
-
-
-// function byPrice(obj){
-//     for(let prop in obj){
-//         if(typeof(obj[prop]) === "object"){
-//             byPrice(obj[prop]);
-//         }
-//         else{
-//             if(prop === 'price'){
-//                 console.log(prop  + ": " + obj[prop])
-//             }
-//         }
-//     }
-// }
-// let findPrice = carMarket.sellers.filter(item => {
-//     byPrice(item)
-// })
-
-
-// function byBrand(obj){
-//     for(let prop in obj){
-//         if(typeof(obj[prop]) === "object"){
-//             byBrand(obj[prop]);
-//         }
-//         else{
-//             if(prop === 'brand'){
-//                 console.log(prop  + ": " + obj[prop])
-//             }
-//         }
-//     }
-// }
-
-// let findBrand = carMarket.sellers.filter(item => {
-//     byBrand(item)
-// })
-
 //----------------------------------------------------------------------------------------------------
-
 
 
 // Return the most expensive car available for sale
