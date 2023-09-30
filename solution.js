@@ -4,22 +4,23 @@ const carMarket =  require("./obj");
 
 // Search for a car agency by its name or ID.
 
-// const getAgencyByNameOrId = (name) => {
-//     return carMarket.sellers.find((agency) => {
-//          return (agency.agencyName === name ||
-//              agency.agencyId === name)}) 
-//         }
+const getAgencyByNameOrId = (name) => {
+    return carMarket.sellers.find((agency) => {
+         return (agency.agencyName === name ||
+             agency.agencyId === name)}) 
+        }
 // console.log(getAgencyByNameOrId('Best Deal'))
 
 // ----------------------------------------------------------------
 
 // Retrieve all agencies' names
 
-// let arr = []
-// carMarket.sellers.forEach( name => {
+let arr = []
+carMarket.sellers.forEach( name => {
 
-//     arr.push( {agencyName : name.agencyName} )
-// })
+    arr.push( {agencyName : name.agencyName} )
+})
+
 // console.log(arr)
 
 // -------------------------------------------------------------------------
@@ -74,24 +75,20 @@ carMarket.sellers[0].cars[2].models[0].price = 67_000 // updated the price of th
 
 // Agency Name = Carsova 
 
-// let startingCash = carMarket.sellers[4].cash // starting cash before selling any cars
+let startingCash = carMarket.sellers[4].cash // starting cash before selling any cars
 // console.log(`Agency's cash : ${startingCash}`)
 
-// let bmwValue =
-// carMarket.sellers[4].cars[0].models[0].price +
-// carMarket.sellers[4].cars[0].models[1].price
-// console.log(`BMWs Value = ${bmwValue}`)
+const carsovaTotal = carMarket.sellers[4].cars.reduce((acc1, seller) => {
+       return (acc1 +  seller.models.reduce((acc2, model) => {
+            return acc2 + model.price;
+       }, 0)
+       )
+        }, 0);
 
-// let toyotaValue =
-// carMarket.sellers[4].cars[1].models[0].price + 
-// carMarket.sellers[4].cars[1].models[1].price 
-// console.log(`Toyotas Value = ${toyotaValue}`)
+//   console.log(`Revenue made from selling the vehicles : ${carsovaTotal}`); 
 
-// let totalRevenue = bmwValue + toyotaValue; // cash made from selling the cars
-// console.log(`Cash earned from selling the cars = ${totalRevenue}`)
-
-// let afterSelling = startingCash + totalRevenue; // agency's cash after selling the cars
-// console.log(`Agencies cash after selling the cars = ${afterSelling}`)
+  let afterSelling = startingCash + carsovaTotal;
+//   console.log(`Carsova's cash after selling : ${afterSelling}`)
 
  
 // -------------------------------------------------------------------------------
@@ -127,26 +124,26 @@ delete carMarket.sellers[3].cars[1].models[1] // removed the land cruiser from C
 //Search for a customer by their name or ID.
 
 
-// const getCustomerByNameOrId = name => {
-//     return carMarket.customers.find((nameOrId) => {
-//         return (nameOrId.name === name || nameOrId.id === name)
-//     })
+const getCustomerByNameOrId = name => {
+    return carMarket.customers.find((nameOrId) => {
+        return (nameOrId.name === name || nameOrId.id === name)
+    })
     
-// }
+}
 // console.log(getCustomerByNameOrId('Ravi Murillo'))
 
 // ---------------------------------------------------------------------------
 
 //Retrieve all customers' names.
 
-// let arr = []
-// const customersNames = customers => {
-//     carMarket.customers.forEach(names => {
-//     arr.push({ Name : names.name })    
+let arr2 = []
+const customersNames = customers => {
+    carMarket.customers.forEach(names => {
+    arr.push({ Name : names.name })    
 
-//     })
-//     return arr
-// }
+    })
+    return arr2
+}
 
 // console.log(customersNames())
 
@@ -170,11 +167,11 @@ let lilahCashAfter = carMarket.customers[0].cash = 50_000  // changed customer c
 // Calculate the total value of all cars owned by a specific customer
 
 
-// let customerTwo = Object.values(carMarket.customers[1].cars)
+let customerTwo = Object.values(carMarket.customers[1].cars)
 // console.log(Object.values(carMarket.customers[1].cars)) // customer's cars
-// let sumOf = customerTwo.reduce((a,b) => {
-//     return a + b.price
-// } , 0)
+let sumOf = customerTwo.reduce((a,b) => {
+    return a + b.price
+} , 0)
 
 // console.log(`Cars Value : ${sumOf}`)
 
@@ -448,4 +445,4 @@ const total = carMarket.sellers.reduce((acc1, seller) => {
     );
   }, 0);
 
-  console.log(total)
+//   console.log(`Market revenue : ${total}`)
