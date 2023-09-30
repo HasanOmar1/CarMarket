@@ -129,6 +129,7 @@ delete carMarket.sellers[3].cars[1].models[1] // removed the land cruiser from C
 //     return carMarket.customers.find((nameOrId) => {
 //         return (nameOrId.name === name || nameOrId.id === name)
 //     })
+    
 // }
 // console.log(getCustomerByNameOrId('Ravi Murillo'))
 
@@ -153,11 +154,12 @@ delete carMarket.sellers[3].cars[1].models[1] // removed the land cruiser from C
 
 // Change the cash of a customer
 
-let lilahCashBefore = carMarket.customers[0].cash // first customer name
-// console.log(lilahCashBefore) // first customer cash [before]
+let lilahCashBefore = carMarket.customers[0].cash // first customer's name
+// console.log(lilahCashBefore) // first customer's cash [before]
 
-let lilahCashAfter = carMarket.customers[0].cash = 50_000  // first customer name
+let lilahCashAfter = carMarket.customers[0].cash = 50_000  // changed customer cash
 // console.log(lilahCashAfter) // first customer cash [after]
+
 // console.log(carMarket.customers[0]) // checking if it worked.
 
 
@@ -187,6 +189,7 @@ let lilahCashAfter = carMarket.customers[0].cash = 50_000  // first customer nam
 // let companyFour = carMarket.sellers[3].cars;
 // let companyFive = carMarket.sellers[4].cars;
 
+
 // console.log(`All the available vehicles :`)
 // for(let prop of companyOne){
 //     console.log(prop)
@@ -206,36 +209,153 @@ let lilahCashAfter = carMarket.customers[0].cash = 50_000  // first customer nam
 
 
 
-
 //Search for cars based on certain criteria. The search parameters should include the
 // production year, price, and optionally, the brand of the car.
 
 
-// function search(year){
-//     return carMarket.sellers.find(byYear => {
-//         return byYear.cars[0].models[0] === year;
-//     })
+
+
+
+
+// function byYear(obj){
+//     for(let prop in obj){
+//         if(typeof(obj[prop]) === "object"){
+//             byYear(obj[prop]);
+//         }
+//         else{
+//             if(prop === 'year'){
+//                 console.log(prop  + ": " + obj[prop])
+//             }
+//         }
+//     }
 // }
-// console.log(carMarket.sellers[0].cars)
-// console.log(search(2015))
-
-
-const getAgencyByNameOrId = (year) => {
-    return carMarket.sellers.find((byYear) => {
-         return byYear.cars[0].models[0].year === year 
-            // byYear.agencyId === year)
-        }) 
-        }
-console.log(getAgencyByNameOrId(2015))
-console.log(carMarket.sellers[0].cars[0].models[0].year)
+// let findYear = carMarket.sellers.filter(item => {
+//     byYear(item)
+// })
 
 
 
 
+// function byPrice(obj){
+//     for(let prop in obj){
+//         if(typeof(obj[prop]) === "object"){
+//             byPrice(obj[prop]);
+//         }
+//         else{
+//             if(prop === 'price'){
+//                 console.log(prop  + ": " + obj[prop])
+//             }
+//         }
+//     }
+// }
+// let findPrice = carMarket.sellers.filter(item => {
+//     byPrice(item)
+// })
+
+
+// function byBrand(obj){
+//     for(let prop in obj){
+//         if(typeof(obj[prop]) === "object"){
+//             byBrand(obj[prop]);
+//         }
+//         else{
+//             if(prop === 'brand'){
+//                 console.log(prop  + ": " + obj[prop])
+//             }
+//         }
+//     }
+// }
+
+// let findBrand = carMarket.sellers.filter(item => {
+//     byBrand(item)
+// })
 
 
 
 
+// Return the most expensive car available for sale
+
+
+    //company 1
+
+    // function mostExpensiveCarsInFirstCompany() {
+    // for(let key of carMarket.sellers[0].cars){
+    //     let maxi =  key.models.reduce((prev,current) => {
+    //         return prev.price > current.price ? prev : current
+    //     })
+    //     console.log(maxi)
+    // }
+    // }
+    // mostExpensiveCarsInFirstCompany() // this returns the most expensive vehicles from each brand in the first company
+
+
+    //company 2
+
+    // function mostExpensiveCarsInSecondCompany() {
+    //     for(let key of carMarket.sellers[1].cars){
+    //         let maxi =  key.models.reduce((prev,current) => {
+    //             return prev.price > current.price ? prev : current
+    //         })
+    //         console.log(maxi)
+    //     }
+    //     }
+    //     mostExpensiveCarsInSecondCompany() // this returns the most expensive vehicles from each brand in the 2nd company
+        
+
+    //company 3
+
+
+    // function mostExpensiveCarsInThirdCompany() {
+    //     for(let key of carMarket.sellers[2].cars){
+    //         let maxi =  key.models.reduce((prev,current) => {
+    //             return prev.price > current.price ? prev : current
+    //         })
+    //         console.log(maxi)
+    //     }
+    //     }
+    //     mostExpensiveCarsInThirdCompany() // this returns the most expensive vehicles from each brand in the 3rd company
 
 
 
+        //company 4
+
+
+        
+    // function mostExpensiveCarsInFourthCompany() {
+    //     for(let key of carMarket.sellers[2].cars){
+    //         let maxi =  key.models.reduce((prev,current) => {
+    //             return prev.price > current.price ? prev : current
+    //         })
+    //         console.log(maxi)
+    //     }
+    //     }
+    //     mostExpensiveCarsInFourthCompany() // this returns the most expensive vehicles from each brand in the 4th company
+        
+    
+    //company 5
+    
+
+    // function mostExpensiveCarsInFifthCompany() {
+    //     for(let key of carMarket.sellers[3].cars){
+    //         let maxi =  key.models.reduce((prev,current) => {
+    //             return prev.price > current.price ? prev : current
+    //         })
+    //         console.log(maxi)
+    //     }
+    //     }
+    //     mostExpensiveCarsInFifthCompany() // this returns the most expensive vehicles from each brand in the 5th company
+        
+
+    //company 6
+    
+    // function mostExpensiveCarsInLastCompany() {
+    //     for(let key of carMarket.sellers[4].cars){
+    //         let maxi =  key.models.reduce((prev,current) => {
+    //             return prev.price > current.price ? prev : current
+    //         })
+    //         console.log(maxi)
+    //     }
+    //     }
+    //     mostExpensiveCarsInLastCompany() // this returns the most expensive vehicles from each brand in the last company
+        
+    
