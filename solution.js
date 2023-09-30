@@ -275,7 +275,7 @@ let lilahCashAfter = carMarket.customers[0].cash = 50_000  // changed customer c
 
 // Return the most expensive car available for sale
 
-
+//--------------------------------------MOST EXPENSIVE VEHICLES--------------------------------------
     //company 1
 
     // function mostExpensiveCarsInFirstCompany() {
@@ -322,7 +322,7 @@ let lilahCashAfter = carMarket.customers[0].cash = 50_000  // changed customer c
 
         
     // function mostExpensiveCarsInFourthCompany() {
-    //     for(let key of carMarket.sellers[2].cars){
+    //     for(let key of carMarket.sellers[3].cars){
     //         let maxi =  key.models.reduce((prev,current) => {
     //             return prev.price > current.price ? prev : current
     //         })
@@ -336,7 +336,7 @@ let lilahCashAfter = carMarket.customers[0].cash = 50_000  // changed customer c
     
 
     // function mostExpensiveCarsInFifthCompany() {
-    //     for(let key of carMarket.sellers[3].cars){
+    //     for(let key of carMarket.sellers[4].cars){
     //         let maxi =  key.models.reduce((prev,current) => {
     //             return prev.price > current.price ? prev : current
     //         })
@@ -346,16 +346,85 @@ let lilahCashAfter = carMarket.customers[0].cash = 50_000  // changed customer c
     //     mostExpensiveCarsInFifthCompany() // this returns the most expensive vehicles from each brand in the 5th company
         
 
-    //company 6
-    
-    // function mostExpensiveCarsInLastCompany() {
-    //     for(let key of carMarket.sellers[4].cars){
+   
+
+
+//-----------------------------------------CHEAPEST VEHICLES------------------------------------
+
+
+    // company 1
+
+    //  function cheapestCarsInFirstCompany() {
+    //     for(let key of carMarket.sellers[0].cars){
     //         let maxi =  key.models.reduce((prev,current) => {
-    //             return prev.price > current.price ? prev : current
+    //             return prev.price < current.price ? prev : current
     //         })
     //         console.log(maxi)
     //     }
     //     }
-    //     mostExpensiveCarsInLastCompany() // this returns the most expensive vehicles from each brand in the last company
+    //     cheapestCarsInFirstCompany() // this returns the cheapest vehicles from each brand in the first company
         
-    
+
+
+        //company 2
+
+        // function cheapestCarsInSecondCompany() {
+        //     for(let key of carMarket.sellers[1].cars){
+        //         let maxi =  key.models.reduce((prev,current) => {
+        //             return prev.price < current.price ? prev : current
+        //         })
+        //         console.log(maxi)
+        //     }
+        //     }
+        //     cheapestCarsInSecondCompany() // this returns the cheapest vehicles from each brand in the 2nd company
+
+
+        //company 3
+
+        // function cheapestCarsInThirdCompany() {
+        //     for(let key of carMarket.sellers[2].cars){
+        //         let maxi =  key.models.reduce((prev,current) => {
+        //             return prev.price < current.price ? prev : current
+        //         })
+        //         console.log(maxi)
+        //     }
+        //     }
+        //     cheapestCarsInThirdCompany() // this returns the cheapest vehicles from each brand in the 3rd company
+
+
+
+        //company 4
+
+
+        // function cheapestCarsInFourthCompany() {
+        //     for(let key of carMarket.sellers[3].cars){
+        //         let maxi =  key.models.reduce((prev,current) => {
+        //             return prev.price < current.price ? prev : current
+        //         })
+        //         console.log(maxi)
+        //     }
+        //     }
+        //     cheapestCarsInFourthCompany() // this returns the cheapest vehicles from each brand in the 4rd company
+
+
+
+        //company 5
+
+        // function cheapestCarsInFifthCompany() {
+        //     for(let key of carMarket.sellers[4].cars){
+        //         let maxi =  key.models.reduce((prev,current) => {
+        //             return prev.price < current.price ? prev : current
+        //         })
+        //         console.log(maxi)
+        //     }
+        //     }
+        //     cheapestCarsInFifthCompany() // this returns the cheapest vehicles from each brand in the 5th company
+
+
+
+            
+            
+            
+            
+
+            
