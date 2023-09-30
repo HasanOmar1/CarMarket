@@ -11,7 +11,7 @@ const carMarket =  require("./obj");
 //         }
 // console.log(getAgencyByNameOrId('Best Deal'))
 
-
+// ----------------------------------------------------------------
 
 // Retrieve all agencies' names
 
@@ -22,7 +22,7 @@ const carMarket =  require("./obj");
 // })
 // console.log(arr)
 
-
+// -------------------------------------------------------------------------
 
 //Add a new car to an agency's inventory.
 
@@ -39,7 +39,9 @@ const carMarket =  require("./obj");
             ]
         }
         // console.log(carMarket.sellers[0])
-        // console.log(Object.values(carMarket.sellers[0].cars[0]))
+        // console.log(Object.values(carMarket.sellers[0].cars[5])) //
+
+// ------------------------------------------------------------------------
 
 
 //Remove a car from an agency's inventory. 
@@ -49,7 +51,7 @@ delete carMarket.sellers[0].cars[2].models[1] // deleted ford year 2005
 // console.log(carMarket.sellers[0].cars[2].models[1])
 // console.log(Object.values(carMarket.sellers[0].cars[2].models))
 
-
+// -----------------------------------------------------------------------
 
 // Change the cash or credit of an agency
 
@@ -57,7 +59,7 @@ delete carMarket.sellers[0].cars[2].models[1] // deleted ford year 2005
 carMarket.sellers[0].credit = 100_000 // first agency only has 100k credit instead of 200k.
 // console.log(carMarket.sellers[0].credit)
 
-
+// -----------------------------------------------------------------------------
 
 // Update the price of a specific car in an agency
 
@@ -66,7 +68,7 @@ carMarket.sellers[0].cars[2].models[0].price = 67_000 // updated the price of th
 // console.log(carMarket.sellers[0].cars[2].models[0].price)
 
 
-
+// ------------------------------------------------------------------------------
 
 //  Calculate and return the total revenue for a specific agency
 
@@ -92,7 +94,7 @@ carMarket.sellers[0].cars[2].models[0].price = 67_000 // updated the price of th
 // console.log(`Agencies cash after selling the cars = ${afterSelling}`)
 
  
-
+// -------------------------------------------------------------------------------
 
 // Transfer a car from one agency to another 
 
@@ -133,7 +135,7 @@ delete carMarket.sellers[3].cars[1].models[1] // removed the land cruiser from C
 // }
 // console.log(getCustomerByNameOrId('Ravi Murillo'))
 
-
+// ---------------------------------------------------------------------------
 
 //Retrieve all customers' names.
 
@@ -149,7 +151,7 @@ delete carMarket.sellers[3].cars[1].models[1] // removed the land cruiser from C
 // console.log(customersNames())
 
 
-
+// -----------------------------------------------------------------------
 
 
 // Change the cash of a customer
@@ -162,16 +164,19 @@ let lilahCashAfter = carMarket.customers[0].cash = 50_000  // changed customer c
 
 // console.log(carMarket.customers[0]) // checking if it worked.
 
-
+// ----------------------------------------------------------------
 
 
 // Calculate the total value of all cars owned by a specific customer
 
 
-// let firstCarValue = carMarket.customers[1].cars[0].price
-// let secondCarValue = carMarket.customers[1].cars[1].price
-// let customerCarsValue = firstCarValue + secondCarValue;
-// console.log(`Cars Value : ${customerCarsValue}`)
+// let customerTwo = Object.values(carMarket.customers[1].cars)
+// console.log(Object.values(carMarket.customers[1].cars)) // customer's cars
+// let sumOf = customerTwo.reduce((a,b) => {
+//     return a + b.price
+// } , 0)
+
+// console.log(`Cars Value : ${sumOf}`)
 
 
 
@@ -207,14 +212,14 @@ let lilahCashAfter = carMarket.customers[0].cash = 50_000  // changed customer c
 //     console.log(prop)
 // }
 
-
+// -----------------------------------------------------------------------------------------------
 
 //Search for cars based on certain criteria. The search parameters should include the
 // production year, price, and optionally, the brand of the car.
 
 
 
-
+// ------[NOT PART OF THE QUESTION]----------------------Gets all year / price / brand -----------------------------------------------
 
 
 // function byYear(obj){
@@ -270,80 +275,81 @@ let lilahCashAfter = carMarket.customers[0].cash = 50_000  // changed customer c
 //     byBrand(item)
 // })
 
+//----------------------------------------------------------------------------------------------------
 
 
 
 // Return the most expensive car available for sale
 
-//--------------------------------------MOST EXPENSIVE VEHICLES--------------------------------------
-    //company 1
+//--------------------------------------MOST EXPENSIVE VEHICLES-------------------------------------- //company 1
 
-    // function mostExpensiveCarsInFirstCompany() {
-    // for(let key of carMarket.sellers[0].cars){
-    //     let maxi =  key.models.reduce((prev,current) => {
-    //         return prev.price > current.price ? prev : current
-    //     })
-    //     console.log(maxi)
-    // }
-    // }
-    // mostExpensiveCarsInFirstCompany() // this returns the most expensive vehicles from each brand in the first company
+//company 1
+
+// function mostExpensiveCarsInFirstCompany() {
+// for(let key of carMarket.sellers[0].cars){
+//     let maxi =  key.models.reduce((prev,current) => {
+//         return prev.price > current.price ? prev : current
+//     })
+//     console.log(maxi)
+// }
+// }
+// mostExpensiveCarsInFirstCompany() // this returns the most expensive vehicles from each brand in the first company
 
 
-    //company 2
+//company 2
 
-    // function mostExpensiveCarsInSecondCompany() {
-    //     for(let key of carMarket.sellers[1].cars){
-    //         let maxi =  key.models.reduce((prev,current) => {
-    //             return prev.price > current.price ? prev : current
-    //         })
-    //         console.log(maxi)
-    //     }
-    //     }
-    //     mostExpensiveCarsInSecondCompany() // this returns the most expensive vehicles from each brand in the 2nd company
+// function mostExpensiveCarsInSecondCompany() {
+//     for(let key of carMarket.sellers[1].cars){
+//         let maxi =  key.models.reduce((prev,current) => {
+//             return prev.price > current.price ? prev : current
+//         })
+//         console.log(maxi)
+//     }
+//     }
+//     mostExpensiveCarsInSecondCompany() // this returns the most expensive vehicles from each brand in the 2nd company
         
 
-    //company 3
+//company 3
 
 
-    // function mostExpensiveCarsInThirdCompany() {
-    //     for(let key of carMarket.sellers[2].cars){
-    //         let maxi =  key.models.reduce((prev,current) => {
-    //             return prev.price > current.price ? prev : current
-    //         })
-    //         console.log(maxi)
-    //     }
-    //     }
-    //     mostExpensiveCarsInThirdCompany() // this returns the most expensive vehicles from each brand in the 3rd company
+// function mostExpensiveCarsInThirdCompany() {
+//     for(let key of carMarket.sellers[2].cars){
+//         let maxi =  key.models.reduce((prev,current) => {
+//             return prev.price > current.price ? prev : current
+//         })
+//         console.log(maxi)
+//     }
+//     }
+//     mostExpensiveCarsInThirdCompany() // this returns the most expensive vehicles from each brand in the 3rd company
 
 
 
-        //company 4
-
+//company 4
 
         
-    // function mostExpensiveCarsInFourthCompany() {
-    //     for(let key of carMarket.sellers[3].cars){
-    //         let maxi =  key.models.reduce((prev,current) => {
-    //             return prev.price > current.price ? prev : current
-    //         })
-    //         console.log(maxi)
-    //     }
-    //     }
-    //     mostExpensiveCarsInFourthCompany() // this returns the most expensive vehicles from each brand in the 4th company
+ // function mostExpensiveCarsInFourthCompany() {
+//     for(let key of carMarket.sellers[3].cars){
+//         let maxi =  key.models.reduce((prev,current) => {
+//             return prev.price > current.price ? prev : current
+//         })
+//         console.log(maxi)
+//     }
+//     }
+//     mostExpensiveCarsInFourthCompany() // this returns the most expensive vehicles from each brand in the 4th company
         
     
-    //company 5
+//company 5
     
 
-    // function mostExpensiveCarsInFifthCompany() {
-    //     for(let key of carMarket.sellers[4].cars){
-    //         let maxi =  key.models.reduce((prev,current) => {
-    //             return prev.price > current.price ? prev : current
-    //         })
-    //         console.log(maxi)
-    //     }
-    //     }
-    //     mostExpensiveCarsInFifthCompany() // this returns the most expensive vehicles from each brand in the 5th company
+// function mostExpensiveCarsInFifthCompany() {
+//     for(let key of carMarket.sellers[4].cars){
+//         let maxi =  key.models.reduce((prev,current) => {
+//             return prev.price > current.price ? prev : current
+//         })
+//         console.log(maxi)
+//     }
+//     }
+//     mostExpensiveCarsInFifthCompany() // this returns the most expensive vehicles from each brand in the 5th company
         
 
    
@@ -352,79 +358,229 @@ let lilahCashAfter = carMarket.customers[0].cash = 50_000  // changed customer c
 //-----------------------------------------CHEAPEST VEHICLES------------------------------------
 
 
-    // company 1
+// company 1
 
-    //  function cheapestCarsInFirstCompany() {
-    //     for(let key of carMarket.sellers[0].cars){
-    //         let maxi =  key.models.reduce((prev,current) => {
-    //             return prev.price < current.price ? prev : current
-    //         })
-    //         console.log(maxi)
-    //     }
-    //     }
-    //     cheapestCarsInFirstCompany() // this returns the cheapest vehicles from each brand in the first company
+//  function cheapestCarsInFirstCompany() {
+//     for(let key of carMarket.sellers[0].cars){
+//         let min =  key.models.reduce((prev,current) => {
+//             return prev.price < current.price ? prev : current
+//         })
+//         console.log(min)
+//     }
+//     }
+//     cheapestCarsInFirstCompany() // this returns the cheapest vehicles from each brand in the first company
         
 
 
-        //company 2
+//company 2
 
-        // function cheapestCarsInSecondCompany() {
-        //     for(let key of carMarket.sellers[1].cars){
-        //         let maxi =  key.models.reduce((prev,current) => {
-        //             return prev.price < current.price ? prev : current
-        //         })
-        //         console.log(maxi)
-        //     }
-        //     }
-        //     cheapestCarsInSecondCompany() // this returns the cheapest vehicles from each brand in the 2nd company
-
-
-        //company 3
-
-        // function cheapestCarsInThirdCompany() {
-        //     for(let key of carMarket.sellers[2].cars){
-        //         let maxi =  key.models.reduce((prev,current) => {
-        //             return prev.price < current.price ? prev : current
-        //         })
-        //         console.log(maxi)
-        //     }
-        //     }
-        //     cheapestCarsInThirdCompany() // this returns the cheapest vehicles from each brand in the 3rd company
+// function cheapestCarsInSecondCompany() {
+//     for(let key of carMarket.sellers[1].cars){
+//         let min =  key.models.reduce((prev,current) => {
+//             return prev.price < current.price ? prev : current
+//         })
+//         console.log(min)
+//     }
+//     }
+//     cheapestCarsInSecondCompany() // this returns the cheapest vehicles from each brand in the 2nd company
 
 
+//company 3
 
-        //company 4
-
-
-        // function cheapestCarsInFourthCompany() {
-        //     for(let key of carMarket.sellers[3].cars){
-        //         let maxi =  key.models.reduce((prev,current) => {
-        //             return prev.price < current.price ? prev : current
-        //         })
-        //         console.log(maxi)
-        //     }
-        //     }
-        //     cheapestCarsInFourthCompany() // this returns the cheapest vehicles from each brand in the 4rd company
+// function cheapestCarsInThirdCompany() {
+//     for(let key of carMarket.sellers[2].cars){
+//         let min =  key.models.reduce((prev,current) => {
+//             return prev.price < current.price ? prev : current
+//         })
+//         console.log(min)
+//     }
+//     }
+//     cheapestCarsInThirdCompany() // this returns the cheapest vehicles from each brand in the 3rd company
 
 
 
-        //company 5
-
-        // function cheapestCarsInFifthCompany() {
-        //     for(let key of carMarket.sellers[4].cars){
-        //         let maxi =  key.models.reduce((prev,current) => {
-        //             return prev.price < current.price ? prev : current
-        //         })
-        //         console.log(maxi)
-        //     }
-        //     }
-        //     cheapestCarsInFifthCompany() // this returns the cheapest vehicles from each brand in the 5th company
+//company 4
 
 
+// function cheapestCarsInFourthCompany() {
+//     for(let key of carMarket.sellers[3].cars){
+//         let min =  key.models.reduce((prev,current) => {
+//             return prev.price < current.price ? prev : current
+//         })
+//         console.log(min)
+//     }
+//     }
+//     cheapestCarsInFourthCompany() // this returns the cheapest vehicles from each brand in the 4rd company
 
-            
-            
-            
-            
 
-            
+
+//company 5
+
+// function cheapestCarsInFifthCompany() {
+//     for(let key of carMarket.sellers[4].cars){
+//         let min =  key.models.reduce((prev,current) => {
+//             return prev.price < current.price ? prev : current
+//         })
+//         console.log(min)
+//     }
+//     }
+//     cheapestCarsInFifthCompany() // this returns the cheapest vehicles from each brand in the 5th company
+
+
+
+// ----------------------------------------------------------------------------------------------------------------------------
+       
+
+// 4. Car Purchase Operations:
+
+
+// ------------------------------------------------------------
+
+//Calculate and return the total revenue of the entire market 
+
+
+ // company 1
+
+let bmwValue = Object.values(carMarket.sellers[0].cars[0].models)
+let toyotaValue = Object.values(carMarket.sellers[0].cars[1].models)
+let fordValue = Object.values(carMarket.sellers[0].cars[2].models)
+let alphaValue = Object.values(carMarket.sellers[0].cars[3].models)
+let chevValue = Object.values(carMarket.sellers[0].cars[4].models)
+let ferarriValue = Object.values(carMarket.sellers[0].cars[5].models)
+
+let a = bmwValue.reduce((a,b) => {
+    return a + b.price
+} , 0)
+let a2 = toyotaValue.reduce((a,b) => {
+    return a + b.price
+} , 0)
+let a3 = fordValue.reduce((a,b) => {
+    return a + b.price
+} , 0)
+let a4 = alphaValue.reduce((a,b) => {
+    return a + b.price
+} , 0)
+let a5 = chevValue.reduce((a,b) => {
+    return a + b.price
+} , 0)
+let a6 = ferarriValue.reduce((a,b) => {
+    return a + b.price
+} , 0)
+
+let firstTotal;
+firstTotal = a + a2 + a3 + a4 + a5 + a6;
+// console.log(firstTotal)
+
+// ------------------------------------------------------------
+
+//company 2
+
+let bmwValue2 = Object.values(carMarket.sellers[1].cars[0].models)
+let toyotaValue2 = Object.values(carMarket.sellers[1].cars[1].models)
+let fordValue2 = Object.values(carMarket.sellers[1].cars[2].models)
+let alphaValue2 = Object.values(carMarket.sellers[1].cars[3].models)
+let chevValue2 = Object.values(carMarket.sellers[1].cars[4].models)
+
+let b = bmwValue2.reduce((a,b) => {
+    return a + b.price
+} , 0)
+let b2 = toyotaValue2.reduce((a,b) => {
+    return a + b.price
+} , 0)
+let b3 = fordValue2.reduce((a,b) => {
+    return a + b.price
+} , 0)
+let b4 = alphaValue2.reduce((a,b) => {
+    return a + b.price
+} , 0)
+let b5 = chevValue2.reduce((a,b) => {
+    return a + b.price
+} , 0)
+
+
+let secondTotal;
+secondTotal = b + b2 + b3 + b4 + b5;
+// console.log(secondTotal)
+
+
+// --------------------------------------------------------
+
+//company 3
+
+let bmwValue3 = Object.values(carMarket.sellers[2].cars[0].models)
+let toyotaValue3 = Object.values(carMarket.sellers[2].cars[1].models)
+let fordValue3 = Object.values(carMarket.sellers[2].cars[2].models)
+let chevValue3 = Object.values(carMarket.sellers[2].cars[3].models)
+
+let c = bmwValue3.reduce((a,b) => {
+    return a + b.price
+} , 0)
+let c2 = toyotaValue3.reduce((a,b) => {
+    return a + b.price
+} , 0)
+let c3 = fordValue3.reduce((a,b) => {
+    return a + b.price
+} , 0)
+let c4 = chevValue3.reduce((a,b) => {
+    return a + b.price
+} , 0)
+
+
+let thirdTotal;
+thirdTotal = c + c2 + c3 + c4;
+// console.log(thirdTotal)
+
+// ----------------------------------------------------------------------------
+
+//company 4
+
+
+
+let bmwValue4 = Object.values(carMarket.sellers[3].cars[0].models)
+let toyotaValue4 = Object.values(carMarket.sellers[3].cars[1].models)
+let chevValue4 = Object.values(carMarket.sellers[3].cars[2].models)
+
+let d = bmwValue4.reduce((a,b) => {
+    return a + b.price
+} , 0)
+let d2 = toyotaValue4.reduce((a,b) => {
+    return a + b.price
+} , 0)
+let d3 = chevValue4.reduce((a,b) => {
+    return a + b.price
+} , 0)
+
+
+let fourthTotal;
+fourthTotal = d + d2 + d3;
+// console.log(fourthTotal)
+
+//-----------------------------------------------
+
+//company 5
+
+
+let bmwValue5 = Object.values(carMarket.sellers[4].cars[0].models)
+let toyotaValue5 = carMarket.sellers[4].cars[1].models
+
+let e = bmwValue5.reduce((a,b) => {
+    return a + b.price
+} , 0)
+let e2 = toyotaValue5.reduce((a,b) => {
+    return a + b.price
+} , 0)
+
+
+let fifthTotal;
+fifthTotal =  e + e2
+// console.log(fifthTotal)
+
+// the land cruiser that i transferred is not counted , i dont know why.
+
+let marketRevenue = firstTotal +
+secondTotal +
+thirdTotal +
+fourthTotal +
+fifthTotal
+console.log(marketRevenue)
+
