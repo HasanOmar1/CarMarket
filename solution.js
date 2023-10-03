@@ -174,7 +174,7 @@ function changeCustomerCash(name , newCash){
     let customerName = getCustomerByNameOrId(name);
     return customerName.cash = newCash
 }
-console.log(changeCustomerCash('BGzHhjnE8' , 30_000))
+console.log(changeCustomerCash('BGzHhjnE8' , 60_000))
 console.log(getCustomerByNameOrId('BGzHhjnE8'))
 
 
