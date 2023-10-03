@@ -60,8 +60,8 @@ function changeCash(name , newCash){
     let agencyName = getAgencyByNameOrId(name);
     return agencyName.cash = newCash
 }
-// console.log(changeCash('Plyq5M5AZ' , 100))
-// console.log(getAgencyByNameOrId('Best Deal'))
+console.log(changeCash('Plyq5M5AZ' , 40000))
+console.log(getAgencyByNameOrId('Best Deal'))
 
 // change credit of an agency
 
