@@ -54,11 +54,27 @@ delete carMarket.sellers[0].cars[2].models[1] // deleted ford year 2005
 
 // -----------------------------------------------------------------------
 
-// Change the cash or credit of an agency
+// change cash of an agency
 
-// console.log(carMarket.sellers[0].credit)
-carMarket.sellers[0].credit = 100_000 // first agency only has 100k credit instead of 200k.
-// console.log(carMarket.sellers[0].credit)
+function changeCash(name , newCash){
+    let agencyName = getAgencyByNameOrId(name);
+    return agencyName.cash = newCash
+}
+// console.log(changeCash('Plyq5M5AZ' , 100))
+// console.log(getAgencyByNameOrId('Best Deal'))
+
+// change credit of an agency
+
+
+function changeCredit(name , newCredit){
+    let agencyName = getAgencyByNameOrId(name);
+    return agencyName.credit = newCredit
+}
+
+// console.log(changeCredit('26_IPfHU1' , 10000))
+// console.log(getAgencyByNameOrId('26_IPfHU1'))
+
+
 
 // -----------------------------------------------------------------------------
 
