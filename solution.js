@@ -191,7 +191,7 @@ function transferCarBetweenAgencies(firstAgencyId , secondAgencyId , brand , car
     return  Object.assign(firstAgency , secondAgency)
     // console.log(transferCars)
 }
-transferCarBetweenAgencies( 'Carsova' , 'Car Werks'  , 'toyota' , 'AZJZ4')
+// transferCarBetweenAgencies( 'Carsova' , 'Car Werks'  , 'toyota' , 'AZJZ4')
 // console.log(transferCarBetweenAgencies( 'Carsova' , 'Car Werks'  , 'toyota' , 'AZJZ4'))
 // console.log(carMarket.sellers[4].cars[1])
 // console.log(carMarket.sellers[3].cars[1])
@@ -267,7 +267,7 @@ changeCustomerCash('BGzHhjnE8' , 60000)
 
 // Calculate the total value of all cars owned by a specific customer
 
-function customerCarsValue(customerId){
+function getCustomerTotalCarValue(customerId){
 let customer =  getCustomerByNameOrId(customerId)
 let carsValue = customer.cars.reduce((acc,currVal) => {
     return acc + currVal.price
@@ -276,7 +276,7 @@ let carsValue = customer.cars.reduce((acc,currVal) => {
 console.log(`Cars Value of ${customer.name} are ${carsValue}`)
 }
 
-customerCarsValue('cnTobUDy6')
+// getCustomerTotalCarValue('cnTobUDy6')
 
 
 
@@ -287,30 +287,18 @@ customerCarsValue('cnTobUDy6')
 //Retrieve all cars available for purchase
 
 
+function carsForSale(){
+    const carsArray = []
+    for(let sellers of carMarket.sellers){
+        for(let cars of sellers.cars){
+                carsArray.push(cars.models)
+        }
+    }
+    return carsArray
+}
 
-let companyOne = carMarket.sellers[0].cars;
-let companyTwo = carMarket.sellers[1].cars;
-let companyThree = carMarket.sellers[2].cars;
-let companyFour = carMarket.sellers[3].cars;
-let companyFive = carMarket.sellers[4].cars;
+// console.log(carsForSale())
 
-
-// console.log(`All the available vehicles :`)
-// for(let prop of companyOne){
-//     console.log(prop)
-// }
-// for(let prop of companyTwo){
-//     console.log(prop)
-// }
-// for(let prop of companyThree){
-//     console.log(prop)
-// }
-// for(let prop of companyFour){
-//     console.log(prop)
-// }
-// for(let prop of companyFive){
-//     console.log(prop)
-// }
 
 // -----------------------------------------------------------------------------------------------
 
@@ -324,151 +312,43 @@ let companyFive = carMarket.sellers[4].cars;
 
 // Return the most expensive car available for sale
 
-//--------------------------------------MOST EXPENSIVE VEHICLES-------------------------------------- //company 1
+// only gives me first company , why?
 
-//company 1
-
-// function mostExpensiveCarsInFirstCompany() {
-// for(let key of carMarket.sellers[0].cars){
-//     let maxi =  key.models.reduce((prev,current) => {
-//         return prev.price > current.price ? prev : current
-//     })
-//     console.log(maxi)
-// }
-// }
-// mostExpensiveCarsInFirstCompany() // this returns the most expensive vehicles from each brand in the first company
-
-
-//company 2
-
-// function mostExpensiveCarsInSecondCompany() {
-//     for(let key of carMarket.sellers[1].cars){
-//         let maxi =  key.models.reduce((prev,current) => {
-//             return prev.price > current.price ? prev : current
-//         })
-//         console.log(maxi)
-//     }
-//     }
-//     mostExpensiveCarsInSecondCompany() // this returns the most expensive vehicles from each brand in the 2nd company
-        
-
-//company 3
-
-
-// function mostExpensiveCarsInThirdCompany() {
-//     for(let key of carMarket.sellers[2].cars){
-//         let maxi =  key.models.reduce((prev,current) => {
-//             return prev.price > current.price ? prev : current
-//         })
-//         console.log(maxi)
-//     }
-//     }
-//     mostExpensiveCarsInThirdCompany() // this returns the most expensive vehicles from each brand in the 3rd company
-
-
-
-//company 4
-
-        
- // function mostExpensiveCarsInFourthCompany() {
-//     for(let key of carMarket.sellers[3].cars){
-//         let maxi =  key.models.reduce((prev,current) => {
-//             return prev.price > current.price ? prev : current
-//         })
-//         console.log(maxi)
-//     }
-//     }
-//     mostExpensiveCarsInFourthCompany() // this returns the most expensive vehicles from each brand in the 4th company
-        
-    
-//company 5
+function getMostExpensiveCar(){
+    for(let sellers of carMarket.sellers){
+        for(let cars of sellers.cars){
+            let expensiveCar = cars.models.reduce((a,b) => {
+               return  a.price > b.price ? a : b 
+            })
+            console.log(`The most expensive vehicle is : `)
+            return expensiveCar
+            }
+        }
     
 
-// function mostExpensiveCarsInFifthCompany() {
-//     for(let key of carMarket.sellers[4].cars){
-//         let maxi =  key.models.reduce((prev,current) => {
-//             return prev.price > current.price ? prev : current
-//         })
-//         console.log(maxi)
-//     }
-//     }
-//     mostExpensiveCarsInFifthCompany() // this returns the most expensive vehicles from each brand in the 5th company
-        
+}
+// console.log(getMostExpensiveCar())
 
-   
+ //----------------------------------------------------------------------------------------------------
 
 
-//-----------------------------------------CHEAPEST VEHICLES------------------------------------
+// Return the cheapest car available for sale
 
+// only gives me first company , why?
 
-// company 1
-
-//  function cheapestCarsInFirstCompany() {
-//     for(let key of carMarket.sellers[0].cars){
-//         let min =  key.models.reduce((prev,current) => {
-//             return prev.price < current.price ? prev : current
-//         })
-//         console.log(min)
-//     }
-//     }
-//     cheapestCarsInFirstCompany() // this returns the cheapest vehicles from each brand in the first company
-        
-
-
-//company 2
-
-// function cheapestCarsInSecondCompany() {
-//     for(let key of carMarket.sellers[1].cars){
-//         let min =  key.models.reduce((prev,current) => {
-//             return prev.price < current.price ? prev : current
-//         })
-//         console.log(min)
-//     }
-//     }
-//     cheapestCarsInSecondCompany() // this returns the cheapest vehicles from each brand in the 2nd company
-
-
-//company 3
-
-// function cheapestCarsInThirdCompany() {
-//     for(let key of carMarket.sellers[2].cars){
-//         let min =  key.models.reduce((prev,current) => {
-//             return prev.price < current.price ? prev : current
-//         })
-//         console.log(min)
-//     }
-//     }
-//     cheapestCarsInThirdCompany() // this returns the cheapest vehicles from each brand in the 3rd company
-
-
-
-//company 4
-
-
-// function cheapestCarsInFourthCompany() {
-//     for(let key of carMarket.sellers[3].cars){
-//         let min =  key.models.reduce((prev,current) => {
-//             return prev.price < current.price ? prev : current
-//         })
-//         console.log(min)
-//     }
-//     }
-//     cheapestCarsInFourthCompany() // this returns the cheapest vehicles from each brand in the 4rd company
-
-
-
-//company 5
-
-// function cheapestCarsInFifthCompany() {
-//     for(let key of carMarket.sellers[4].cars){
-//         let min =  key.models.reduce((prev,current) => {
-//             return prev.price < current.price ? prev : current
-//         })
-//         console.log(min)
-//     }
-//     }
-//     cheapestCarsInFifthCompany() // this returns the cheapest vehicles from each brand in the 5th company
-
+function getCheapestCar(){
+    for(let sellers of carMarket.sellers){
+        for(let cars of sellers.cars){
+            let cheapestCar = cars.models.reduce((a,b) => {
+               return  a.price > b.price ? b : a 
+            })
+            console.log(`The cheapest vehicle is : `)
+            return cheapestCar
+            }
+        }
+    
+}
+// console.log(getCheapestCar())
 
 
 // ----------------------------------------------------------------------------------------------------------------------------
@@ -483,6 +363,7 @@ let companyFive = carMarket.sellers[4].cars;
 
 //Calculate and return the total revenue of the entire market 
 
+function getTotalMarketRevenue(){
 const total = carMarket.sellers.reduce((acc1, seller) => {
     return ( acc1 + seller.cars.reduce((acc2, car) => {
         return (acc2 + car.models.reduce((acc3, model) => {
@@ -492,5 +373,6 @@ const total = carMarket.sellers.reduce((acc1, seller) => {
       }, 0)
     );
   }, 0);
-
-//   console.log(`Market revenue : ${total}`)
+  return `The Market's Revenue is ${total}`
+}
+// console.log(getTotalMarketRevenue())
