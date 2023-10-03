@@ -169,6 +169,18 @@ const customersNames = customers => {
 
 // Change the cash of a customer
 
+
+function changeCustomerCash(name , newCash){
+    let customerName = getCustomerByNameOrId(name);
+    return customerName.cash = newCash
+}
+console.log(changeCustomerCash('BGzHhjnE8' , 30_000))
+console.log(getCustomerByNameOrId('BGzHhjnE8'))
+
+
+
+
+
 let lilahCashBefore = carMarket.customers[0].cash // first customer's name
 // console.log(lilahCashBefore) // first customer's cash [before]
 
