@@ -28,6 +28,22 @@ function allAgencies(){
 
 // -------------------------------------------------------------------------
 
+// my own code to help me find the brand
+
+function carBrand(agencyId , brand){
+const agency = getAgencyByNameOrId(agencyId)
+const carBrands = agency.cars.find(brands => {
+    return brands.brand === brand
+})
+if(carBrands){
+    return carBrands
+}
+}
+// console.log(carBrand('Plyq5M5AZ' , 'Ford'))
+
+
+// -------------------------------------------------------------------------
+
 
 //Add a new car to an agency's inventory.
 
@@ -121,37 +137,66 @@ function changeCredit(name , newCredit){
 
 // Update the price of a specific car in an agency
 
-// console.log(carMarket.sellers[0].cars[2].models[0].price)
-carMarket.sellers[0].cars[2].models[0].price = 67_000 // updated the price of the ford
+function updateCarPrice(agencyId , brand ,  carNumber ,  newPrice){
+
+    const agency = getAgencyByNameOrId(agencyId);
+    let brands = carBrand(agencyId , brand)
+    let numOfCar = brands.models.find(carId => {
+        return carId.carNumber === carNumber;
+    })
+    const carPrice = brands.models.find(prices => {
+        return prices.price = newPrice
+    })
+    
+}
+updateCarPrice('Plyq5M5AZ', 'Ford' , 'kN3HP' , 67000)
 // console.log(carMarket.sellers[0].cars[2].models[0].price)
 
-
-// ------------------------------------------------------------------------------
+// -----------------------------------------------------------------------------
 
 //  Calculate and return the total revenue for a specific agency
 
-// Agency Name = Carsova 
 
-let startingCash = carMarket.sellers[4].cash // starting cash before selling any cars
-// console.log(`Agency's cash : ${startingCash}`)
+function getTotalAgencyRevenue(agencyId){
 
-const carsovaTotal = carMarket.sellers[4].cars.reduce((acc1, seller) => {
+    let agency = getAgencyByNameOrId(agencyId)
+    const total = agency.cars.reduce((acc1, seller) => {
        return (acc1 +  seller.models.reduce((acc2, model) => {
             return acc2 + model.price;
        }, 0)
        )
         }, 0);
 
-//   console.log(`Revenue made from selling the vehicles : ${carsovaTotal}`); 
+        return total;
 
-  let afterSelling = startingCash + carsovaTotal;
-//   console.log(`Carsova's cash after selling : ${afterSelling}`)
+}
 
- 
+// console.log(getTotalAgencyRevenue('oqQmsZoUo'))
+
+
+// -----------------------------------------------------------------------------
+
+// Transfer a car from one agency to another  // [NOT RIGHT]
+
+
+function transferCarBetweenAgencies(firstAgencyId , secondAgencyId , brand , carNumber){
+
+    let firstAgency = getAgencyByNameOrId(firstAgencyId)
+    let secondAgency = getAgencyByNameOrId(secondAgencyId)
+    let brands = carBrand(firstAgencyId , brand)
+    let numOfCar = brands.models.find(carId => {
+        return carId.carNumber === carNumber;
+    })
+    // console.log(numOfCar)
+    return  Object.assign(firstAgency , secondAgency)
+    // console.log(transferCars)
+}
+transferCarBetweenAgencies( 'Carsova' , 'Car Werks'  , 'toyota' , 'AZJZ4')
+// console.log(transferCarBetweenAgencies( 'Carsova' , 'Car Werks'  , 'toyota' , 'AZJZ4'))
+// console.log(carMarket.sellers[4].cars[1])
+// console.log(carMarket.sellers[3].cars[1])
+
 // -------------------------------------------------------------------------------
-
-// Transfer a car from one agency to another 
-
 
 let landCruiser = carMarket.sellers[3].cars[1].models[1]
 // console.log(carMarket.sellers[3].cars[1].models[1])
@@ -159,7 +204,7 @@ let landCruiser = carMarket.sellers[3].cars[1].models[1]
 let carsovaToyota = carMarket.sellers[4].cars[1].models
 // console.log(carMarket.sellers[4].cars[1].models)
 
-let transferringCar = Object.assign(carsovaToyota , landCruiser) // transferred the land cruiser from Car Werks agency to Carsova agency
+// let transferringCar = Object.assign(carsovaToyota , landCruiser) // transferred the land cruiser from Car Werks agency to Carsova agency
 // console.log(transferringCar)
 
 delete carMarket.sellers[3].cars[1].models[1] // removed the land cruiser from Car Werks agency
@@ -187,62 +232,51 @@ const getCustomerByNameOrId = name => {
     })
     
 }
-// console.log(getCustomerByNameOrId('Ravi Murillo'))
+// console.log(getCustomerByNameOrId('BGzHhjnE8'))
 
 // ---------------------------------------------------------------------------
 
 //Retrieve all customers' names.
 
-let arr2 = []
-const customersNames = customers => {
+function customersNames(){
+    let arr2 = []
     carMarket.customers.forEach(names => {
-    arr.push({ Name : names.name })    
+    arr2.push(names.name)    
 
     })
     return arr2
-}
 
+}
 // console.log(customersNames())
 
 
 // -----------------------------------------------------------------------
 
-
 // Change the cash of a customer
-
 
 function changeCustomerCash(name , newCash){
     let customerName = getCustomerByNameOrId(name);
     return customerName.cash = newCash
 }
-// console.log(changeCustomerCash('BGzHhjnE8' , 60000))
+changeCustomerCash('BGzHhjnE8' , 60000)
 // console.log(getCustomerByNameOrId('BGzHhjnE8'))
 
-
-
-
-
-let lilahCashBefore = carMarket.customers[0].cash // first customer's name
-// console.log(lilahCashBefore) // first customer's cash [before]
-
-let lilahCashAfter = carMarket.customers[0].cash = 50000  // changed customer cash
-// console.log(lilahCashAfter) // first customer cash [after]
-
-// console.log(carMarket.customers[0]) // checking if it worked.
 
 // ----------------------------------------------------------------
 
 
 // Calculate the total value of all cars owned by a specific customer
 
-
-let customerTwo = Object.values(carMarket.customers[1].cars)
-// console.log(Object.values(carMarket.customers[1].cars)) // customer's cars
-let sumOf = customerTwo.reduce((a,b) => {
-    return a + b.price
+function customerCarsValue(customerId){
+let customer =  getCustomerByNameOrId(customerId)
+let carsValue = customer.cars.reduce((acc,currVal) => {
+    return acc + currVal.price
 } , 0)
 
-// console.log(`Cars Value : ${sumOf}`)
+console.log(`Cars Value of ${customer.name} are ${carsValue}`)
+}
+
+customerCarsValue('cnTobUDy6')
 
 
 
