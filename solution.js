@@ -24,7 +24,7 @@ function allAgencies(){
     return arr;
     
 }
-console.log(allAgencies())
+// console.log(allAgencies())
 
 // -------------------------------------------------------------------------
 
@@ -36,19 +36,19 @@ function addCars(agencyId , car , brand ){
     const agency = getAgencyByNameOrId(agencyId)
     if(agency){
       const carBrand =  agency.cars.find(brands => {
-           return brands.brand === brand
-           
+          return brands.brand === brand
+          
         })
         if(carBrand){
             carBrand.models.push(car)
         }else{
             agency.cars.push(
                 {
-                brand : brand,
-                models : [car]
+                    brand : brand,
+                    models : [car]
                 }
-             )
-        }
+                )
+            }
 
     }
     else{
@@ -72,10 +72,26 @@ addCars('Plyq5M5AZ' , {
 
 //Remove a car from an agency's inventory. 
 
-// console.log(carMarket.sellers[0].cars[2].models[1])
-delete carMarket.sellers[0].cars[2].models[1] // deleted ford year 2005
-// console.log(carMarket.sellers[0].cars[2].models[1])
-// console.log(Object.values(carMarket.sellers[0].cars[2].models))
+
+function removeCar(agencyId , brand ,   carNumber){
+
+    const agency = getAgencyByNameOrId(agencyId);
+    const carBrand = agency.cars.find(brands => {
+        return brands.brand === brand;
+        
+    })
+    if(carBrand){
+        let index = carBrand.models.findIndex(models => {
+                return models.carNumber ===  carNumber;
+        })
+        if(index !== -1){
+            carBrand.models.splice(index , 1)
+        }
+    }
+}
+
+removeCar('Plyq5M5AZ' , 'Ford' ,   'LJTCs')
+// console.log(carMarket.sellers[0].cars[2].models)
 
 // -----------------------------------------------------------------------
 
@@ -88,8 +104,8 @@ function changeCash(name , newCash){
 // console.log(changeCash('Plyq5M5AZ' , 40000))
 // console.log(getAgencyByNameOrId('Best Deal'))
 
-// change credit of an agency
 
+// change credit of an agency
 
 function changeCredit(name , newCredit){
     let agencyName = getAgencyByNameOrId(name);
