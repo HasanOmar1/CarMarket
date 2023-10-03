@@ -15,32 +15,52 @@ const getAgencyByNameOrId = (name) => {
 
 // Retrieve all agencies' names
 
+
 let arr = []
 carMarket.sellers.forEach( name => {
 
-    arr.push( {agencyName : name.agencyName} )
+    arr.push(  name.agencyName )
 })
 
 // console.log(arr)
 
 // -------------------------------------------------------------------------
 
+
 //Add a new car to an agency's inventory.
 
-        carMarket.sellers[0].cars[5] = {
-            brand : 'Ferarri',
-            models : [
-                {
-                    name : 'sonic',
-                    year : 2023,
-                    price : 500_000,
-                    carNumber : 'ASD9',
-                    ownerId : "Plyq5M5AZ"
-                }
-            ]
+function addCars(agencyId , car , brand ){
+
+    const agency = getAgencyByNameOrId(agencyId)
+    if(agency){
+      const carBrand =  agency.cars.find(brands => {
+           return brands.brand === brand
+           
+        })
+        if(carBrand){
+            carBrand.models.push(car)
+        }else{
+            agency.cars.push({
+                brand : brand,
+                models : [car]
+             })
         }
-        // console.log(carMarket.sellers[0])
-        // console.log(Object.values(carMarket.sellers[0].cars[5])) //
+
+    }
+    else{
+        return `Agency not FOUND`
+    }
+}
+addCars('Plyq5M5AZ' , {
+    name : 'sonic',
+    year : 2023,
+    price : 500000,
+    carNumber : 'ASD9',
+     ownerId : "Plyq5M5AZ" 
+},'Ferrari')
+
+// console.log(carMarket.sellers[0].cars[0])
+  
 
 // ------------------------------------------------------------------------
 
@@ -174,8 +194,8 @@ function changeCustomerCash(name , newCash){
     let customerName = getCustomerByNameOrId(name);
     return customerName.cash = newCash
 }
-console.log(changeCustomerCash('BGzHhjnE8' , 60_000))
-console.log(getCustomerByNameOrId('BGzHhjnE8'))
+// console.log(changeCustomerCash('BGzHhjnE8' , 60000))
+// console.log(getCustomerByNameOrId('BGzHhjnE8'))
 
 
 
@@ -184,7 +204,7 @@ console.log(getCustomerByNameOrId('BGzHhjnE8'))
 let lilahCashBefore = carMarket.customers[0].cash // first customer's name
 // console.log(lilahCashBefore) // first customer's cash [before]
 
-let lilahCashAfter = carMarket.customers[0].cash = 50_000  // changed customer cash
+let lilahCashAfter = carMarket.customers[0].cash = 50000  // changed customer cash
 // console.log(lilahCashAfter) // first customer cash [after]
 
 // console.log(carMarket.customers[0]) // checking if it worked.
@@ -400,6 +420,8 @@ let companyFive = carMarket.sellers[4].cars;
        
 
 // 4. Car Purchase Operations:
+
+
 
 
 // ------------------------------------------------------------
