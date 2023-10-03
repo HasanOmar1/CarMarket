@@ -15,14 +15,16 @@ const getAgencyByNameOrId = (name) => {
 
 // Retrieve all agencies' names
 
-
-let arr = []
-carMarket.sellers.forEach( name => {
-
-    arr.push(  name.agencyName )
-})
-
-// console.log(arr)
+function allAgencies(){
+    const arr = []
+    carMarket.sellers.forEach( name => {
+    
+      arr.push(name.agencyName )
+    })
+    return arr;
+    
+}
+console.log(allAgencies())
 
 // -------------------------------------------------------------------------
 
@@ -40,10 +42,12 @@ function addCars(agencyId , car , brand ){
         if(carBrand){
             carBrand.models.push(car)
         }else{
-            agency.cars.push({
+            agency.cars.push(
+                {
                 brand : brand,
                 models : [car]
-             })
+                }
+             )
         }
 
     }
@@ -51,12 +55,13 @@ function addCars(agencyId , car , brand ){
         return `Agency not FOUND`
     }
 }
+
 addCars('Plyq5M5AZ' , {
     name : 'sonic',
     year : 2023,
     price : 500000,
     carNumber : 'ASD9',
-     ownerId : "Plyq5M5AZ" 
+    ownerId : "Plyq5M5AZ" 
 },'Ferrari')
 
 // console.log(carMarket.sellers[0].cars[0])
