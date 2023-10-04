@@ -100,7 +100,7 @@ function removeCar(agencyId , brand ,   carNumber){
         let index = carBrand.models.findIndex(models => {
                 return models.carNumber ===  carNumber;
         })
-        if(index !== -1){
+            if(index !== -1){
             carBrand.models.splice(index , 1)
         }
     }
@@ -139,7 +139,6 @@ function changeCredit(name , newCredit){
 
 function updateCarPrice(agencyId , brand ,  carNumber ,  newPrice){
 
-    const agency = getAgencyByNameOrId(agencyId);
     let brands = carBrand(agencyId , brand)
     let numOfCar = brands.models.find(carId => {
         return carId.carNumber === carNumber;
@@ -171,7 +170,7 @@ function getTotalAgencyRevenue(agencyId){
 
 }
 
-// console.log(getTotalAgencyRevenue('oqQmsZoUo'))
+// console.log(getTotalAgencyRevenue('Plyq5M5AZ'))
 
 
 // -----------------------------------------------------------------------------
@@ -188,32 +187,14 @@ function transferCarBetweenAgencies(firstAgencyId , secondAgencyId , brand , car
         return carId.carNumber === carNumber;
     })
     // console.log(numOfCar)
-    return  Object.assign(firstAgency , secondAgency)
-    // console.log(transferCars)
+    return  removeCar(firstAgencyId , brand ,   carNumber)
 }
-// transferCarBetweenAgencies( 'Carsova' , 'Car Werks'  , 'toyota' , 'AZJZ4')
+transferCarBetweenAgencies( 'Carsova' , 'Car Werks'  , 'toyota' , 'AZJZ4')
 // console.log(transferCarBetweenAgencies( 'Carsova' , 'Car Werks'  , 'toyota' , 'AZJZ4'))
 // console.log(carMarket.sellers[4].cars[1])
 // console.log(carMarket.sellers[3].cars[1])
 
 // -------------------------------------------------------------------------------
-
-let landCruiser = carMarket.sellers[3].cars[1].models[1]
-// console.log(carMarket.sellers[3].cars[1].models[1])
-
-let carsovaToyota = carMarket.sellers[4].cars[1].models
-// console.log(carMarket.sellers[4].cars[1].models)
-
-// let transferringCar = Object.assign(carsovaToyota , landCruiser) // transferred the land cruiser from Car Werks agency to Carsova agency
-// console.log(transferringCar)
-
-delete carMarket.sellers[3].cars[1].models[1] // removed the land cruiser from Car Werks agency
-
-// console.log(carMarket.sellers[3].cars[1].models[1]) // land cruiser is not there anymore
-// console.log(carMarket.sellers[4].cars[1]) // land Cruiser has been transferred.
-
-
-
 
 
 
@@ -273,10 +254,10 @@ let carsValue = customer.cars.reduce((acc,currVal) => {
     return acc + currVal.price
 } , 0)
 
-console.log(`Cars Value of ${customer.name} are ${carsValue}`)
+console.log(`Cars Value of ${customer.name} are ${carsValue + customer.cash}`)
 }
 
-// getCustomerTotalCarValue('cnTobUDy6')
+// getCustomerTotalCarValue('2RprZ1dbL')
 
 
 
@@ -291,7 +272,7 @@ function carsForSale(){
     const carsArray = []
     for(let sellers of carMarket.sellers){
         for(let cars of sellers.cars){
-                carsArray.push(cars.models)
+                carsArray.push(...cars.models)
         }
     }
     return carsArray
@@ -312,20 +293,15 @@ function carsForSale(){
 
 // Return the most expensive car available for sale
 
-// only gives me first company , why?
 
 function getMostExpensiveCar(){
-    for(let sellers of carMarket.sellers){
-        for(let cars of sellers.cars){
-            let expensiveCar = cars.models.reduce((a,b) => {
-               return  a.price > b.price ? a : b 
-            })
-            console.log(`The most expensive vehicle is : `)
-            return expensiveCar
-            }
-        }
-    
 
+    const cars = carsForSale()
+    let expensiveCars = cars.reduce((acc,curr , index) => {
+        return acc.price > curr.price ? acc : {price : curr.price , index : index}
+    },{price : cars[0].price , index : 0})
+    
+return cars[expensiveCars.index]
 }
 // console.log(getMostExpensiveCar())
 
@@ -334,18 +310,15 @@ function getMostExpensiveCar(){
 
 // Return the cheapest car available for sale
 
-// only gives me first company , why?
 
 function getCheapestCar(){
-    for(let sellers of carMarket.sellers){
-        for(let cars of sellers.cars){
-            let cheapestCar = cars.models.reduce((a,b) => {
-               return  a.price > b.price ? b : a 
-            })
-            console.log(`The cheapest vehicle is : `)
-            return cheapestCar
-            }
-        }
+  
+    const cars = carsForSale()
+    let cheapestCar = cars.reduce((acc,curr , index) => {
+        return acc.price < curr.price ? acc : {price : curr.price , index : index}
+    },{price : cars[0].price , index : 0})
+    
+return cars[cheapestCar.index]
     
 }
 // console.log(getCheapestCar())
